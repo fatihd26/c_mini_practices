@@ -1,96 +1,44 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
-void square(double * number){
-    *number =  (*number)* (*number);
+
+
+
+int ** createMatrice(int rows,int cols){
+    int ** matrice = malloc(rows*sizeof(int *));
+    
+    for (int i = 0; i < rows; i++)
+    {
+        *(matrice+i) = malloc(cols*sizeof(int));
+    }
+
+    return matrice;
+    
 }
 
-void len(char * str){
-    int flag = 1;
-    int length = 0;
-    while(flag){
-        if ((*str) == '\0') 
-        {
-            flag = 0;
-        }
-        else if ((*str) == ' ')
-        {
-            str++;
-        }
-        
-        else{
-            str++;
-            length++;
-        }
-        
-        
-       
-        
+void freeMatrice(int rows, int ** matrice){
+
+    for (int i = 0; i < rows; i++)
+    {
+        free(*(matrice + i));
     }
-    printf("%d",length);
-
-}
-
-void wordSize(char * str){
-    int flag = 1;
-    int word_length = 0;
-    char * current_char = malloc(sizeof(char));
-
-    while (flag)
-    {   
-        *current_char = *str;
-        if ((*str)== '\0'){
-            flag = 0;
-        }
-        else if ((*str)==' '){
-
-            str++;
-
-            if (*current_char != *str){
-                word_length++;
-            }
-            
-
-        }
-        else{
-            str++;
-        }
-    }
-    printf("%d",word_length+1);
+    free(matrice);
     
 }
 
 
-
-
 int main() {
 
-    int ** matrice = malloc(5 * sizeof(int *));
+    int ** matrice = createMatrice(2,1);
 
-    for(int i = 0;i<5;i++){
-        *(matrice+i) = malloc(2*sizeof(int));
-        
-    }
+    matrice[0][0] = 100;
+    matrice[1][0] = 200;
 
-    for (int i= 0; i<5;i++){
-        for(int j = 0;j<2;j++){
-            *(*(matrice+i)+j) = i+j*j;
+    printf("%d\n",matrice[0][0]);
+    printf("%d\n",matrice[1][0]);
 
-            
-            printf("%d ", *(*(matrice+i)+j));
-            
-        }
-    }
-
-
-    for (int i = 0;i<5;i++){
-        free(*(matrice+i));
-    }
-
-    free(matrice);
-
+    freeMatrice(2,matrice);
 
     return 0;
      
