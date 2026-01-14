@@ -1,44 +1,44 @@
 
 #include <stdio.h>
-#include <stdlib.h>
-
-
-
-
-int ** createMatrice(int rows,int cols){
-    int ** matrice = malloc(rows*sizeof(int *));
-    
-    for (int i = 0; i < rows; i++)
-    {
-        *(matrice+i) = malloc(cols*sizeof(int));
-    }
-
-    return matrice;
-    
-}
-
-void freeMatrice(int rows, int ** matrice){
-
-    for (int i = 0; i < rows; i++)
-    {
-        free(*(matrice + i));
-    }
-    free(matrice);
-    
-}
-
-
+#include "src/matrix.h"
 int main() {
 
-    int ** matrice = createMatrice(2,1);
+    int ** matrice1 = createMatrice(3,3);
+    int ** matrice2 = createMatrice(3,3);
+                                    
+    matrice1[0][0] = 100;
+    matrice1[1][0] = 200;
+    matrice1[2][0] = 300;
 
-    matrice[0][0] = 100;
-    matrice[1][0] = 200;
+    matrice1[0][1] = 10;
+    matrice1[1][1] = 20;
+    matrice1[2][1] = 30;
 
-    printf("%d\n",matrice[0][0]);
-    printf("%d\n",matrice[1][0]);
+    matrice1[0][2] = 1;
+    matrice1[1][2] = 2;
+    matrice1[2][2] = 3;
 
-    freeMatrice(2,matrice);
+    matrice2[0][0] = 100;
+    matrice2[1][0] = 200;
+    matrice2[2][0] = 300;
+
+    matrice2[0][1] = 10;
+    matrice2[1][1] = 20;
+    matrice2[2][1] = 30;
+
+    matrice2[0][2] = 1;
+    matrice2[1][2] = 2;
+    matrice2[2][2] = 3;
+
+    int ** matrice3 = dotMatrices(matrice1,matrice2,3,3,3);
+
+    prettyMatrice(3,3,matrice3);
+
+    freeMatrice(3,matrice3);
+
+    freeMatrice(3,matrice1);
+    freeMatrice(3,matrice2);
+
 
     return 0;
      

@@ -6,5 +6,6 @@ set(CMAKE_C_STANDARD 11)
 
 add_executable(VSCODE_1
     main.c
+    src/matrix.c
     
 )
