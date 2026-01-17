@@ -60,3 +60,6 @@ int ** dotMatrices(int ** matrice1, int ** matrice2,int matrice1_cols,int matric
     
 }
 
+void setMatriceValue(int ** matrice, int row_index, int col_index, int value){
+    matrice[row_index][col_index] = value;
+}
