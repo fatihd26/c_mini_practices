@@ -7,27 +7,33 @@
 
 int main() {
 
-    Circuit * circuit = createCircuit(2);
+    Circuit * circuit = createCircuit(4);
 
     NodeWrapper * node_wrapper1 = createNodeWrapper();
     initNode(node_wrapper1);
-
     addNodeToCircuit(circuit, node_wrapper1);
 
     NodeWrapper * node_wrapper2 = createNodeWrapper();
     initNode(node_wrapper2);
-
     addNodeToCircuit(circuit, node_wrapper2);
 
+    NodeWrapper * node_wrapper3 = createNodeWrapper();
+    initNode(node_wrapper3);
+    addNodeToCircuit(circuit, node_wrapper3);
+
+    NodeWrapper * node_wrapper4 = createNodeWrapper();
+    initNode(node_wrapper4);
+    addNodeToCircuit(circuit, node_wrapper4);
+
+    
+    connectNodes(node_wrapper1, node_wrapper2);
+    connectNodes(node_wrapper3, node_wrapper4);
+
+    printf("%d\n", circuit->node_count);
     createGraphMatrix(circuit);
 
-    for (int i = 0; i < circuit->node_count; i++) {
-            if (circuit->node_wrappers[i].node->connected_node_count >= 1){
-                for (int j = 0; j< circuit->node_wrappers[i].connecting_nodes[j].connected_node_count; j++) {
-                    setMatriceValue(circuit->graph_matrix,circuit->node_wrappers[i].node->connected_node_count, circuit->node_wrappers[i].connecting_nodes[j].id, 1);
-                }
-            }
-    }
+    fillMatrix(circuit);
+
 
     prettyMatrice(circuit->node_count, circuit->node_count, circuit->graph_matrix);
 

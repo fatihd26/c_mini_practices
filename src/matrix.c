@@ -2,11 +2,15 @@
 
 
 int ** createMatrice(int rows,int cols){
-    int ** matrice = malloc(rows*sizeof(int *));
+    //int ** matrice = malloc(rows*sizeof(int *));
+    // burada hem double pointer hem de calloc kullanmam performans olarak olumsuz etki yapar.
+    // Double pointer cache friendly değildir. Ancak projenin ölçeği küçük olduğu için bu etki ihmal edilebilir.
+    int ** matrice = calloc(rows,sizeof(int *)); 
     
     for (int i = 0; i < rows; i++)
     {
-        *(matrice+i) = malloc(cols*sizeof(int));
+        //*(matrice+i) = malloc(cols*sizeof(int));
+        *(matrice+i) = calloc(cols,sizeof(int));
     }
 
     return matrice;

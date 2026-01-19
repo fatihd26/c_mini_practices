@@ -16,5 +16,6 @@ Circuit * createCircuit(int initial_capacity);
 void addNodeToCircuit(Circuit * circuit, NodeWrapper * node_wrapper);
 void freeCircuit(Circuit * circuit);
 
+void fillMatrix(Circuit * circuit);
 
 #endif
