@@ -4,32 +4,22 @@
 #include "src/components/circuit.h"
 
 #include "src/components/node.h"
+#include "src/components/resistor.h"
 
 int main() {
 
     Circuit * circuit = createCircuit(4);
 
-    NodeWrapper * node_wrapper1 = createNodeWrapper();
-    initNode(node_wrapper1);
-    addNodeToCircuit(circuit, node_wrapper1);
+    Resistor * resistor1 = createResistor(100.0);
+    Resistor * resistor2 = createResistor(200.0);
 
-    NodeWrapper * node_wrapper2 = createNodeWrapper();
-    initNode(node_wrapper2);
-    addNodeToCircuit(circuit, node_wrapper2);
+    addResistorToCircuit(resistor1, circuit);
+    addResistorToCircuit(resistor2, circuit);
 
-    NodeWrapper * node_wrapper3 = createNodeWrapper();
-    initNode(node_wrapper3);
-    addNodeToCircuit(circuit, node_wrapper3);
 
-    NodeWrapper * node_wrapper4 = createNodeWrapper();
-    initNode(node_wrapper4);
-    addNodeToCircuit(circuit, node_wrapper4);
 
-    
-    connectNodes(node_wrapper1, node_wrapper2);
-    connectNodes(node_wrapper3, node_wrapper4);
-
-    printf("%d\n", circuit->node_count);
+    connectNodes(resistor1->node_wrapper_positive, resistor2->node_wrapper_positive);
+    connectNodes(resistor1->node_wrapper_negative, resistor2->node_wrapper_negative);
     createGraphMatrix(circuit);
 
     fillMatrix(circuit);
@@ -37,13 +27,17 @@ int main() {
 
     prettyMatrice(circuit->node_count, circuit->node_count, circuit->graph_matrix);
 
+    deleteResistorFromCircuit(circuit,resistor1);
 
+    prettyMatrice(circuit->node_count, circuit->node_count, circuit->graph_matrix);
+
+    
+
+    
     freeCircuit(circuit);
     freeMatrice(circuit->node_count, circuit->graph_matrix);
     
 
-    freeNode(node_wrapper1);
-    freeNode(node_wrapper2);
 
 
 

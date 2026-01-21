@@ -36,3 +36,4 @@ void freeNode(NodeWrapper * node_wrapper){
     free(node_wrapper->node);
     free(node_wrapper);
 }
+

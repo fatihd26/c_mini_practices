@@ -9,6 +9,8 @@ add_executable(VSCODE_1
     src/matrix.c
     src/components/node.c
     src/components/circuit.c
+    src/components/resistor.c
+    src/solver/equal_resistance.c
 
     
 )

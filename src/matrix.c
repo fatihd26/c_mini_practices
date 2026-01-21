@@ -36,6 +36,7 @@ void prettyMatrice(int rows, int cols,int ** matrice){
         }
         printf("\n");
     }
+    printf("\n");
     
 }
 

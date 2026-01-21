@@ -1,6 +1,5 @@
 
 #include "circuit.h"
-#include "../matrix.h"
 
 Circuit * createCircuit(int initial_capacity){
     Circuit * circuit = malloc(sizeof(Circuit));
@@ -11,14 +10,19 @@ Circuit * createCircuit(int initial_capacity){
 }
 
 void addNodeToCircuit(Circuit *circuit, NodeWrapper *node_wrapper) {
-    if (circuit->node_count >= circuit->capacity) {
-        circuit->capacity *= 2;
-        NodeWrapper *temp = realloc(circuit->node_wrappers, sizeof(NodeWrapper) * circuit->capacity);
-        if (!temp) return; // realloc başarısız, hata yönetimi
-        circuit->node_wrappers = temp;
-    }
+    if (circuit->node_count+1 > circuit->capacity) {
+        circuit->capacity = circuit->capacity * 2;
+        NodeWrapper * temp = realloc(circuit->node_wrappers, sizeof(NodeWrapper) * (circuit->capacity));
+        if (!temp){ 
+            return;
+        }
+        
 
-    // Heap pointer paylaşımı yerine pointer’ı tutmak daha güvenli
+        else{
+            circuit->node_wrappers = temp;
+        }
+    }
+    
     circuit->node_wrappers[circuit->node_count] = *node_wrapper;
     circuit->node_count++;
 }
@@ -51,4 +55,41 @@ void fillMatrix(Circuit * circuit){
 
         }
     }
+}
+
+
+
+
+
+void deleteNodeWrapperFromCircuit(Circuit * circuit, NodeWrapper * node_wrapper){
+    int index = -1;
+    for (int i = 0; i < circuit->node_count; i++) {
+        if (circuit->node_wrappers[i].node->id == node_wrapper->node->id) {
+            index = i;
+            break;
+        }
+    }
+    if (index == -1) {
+        return;
+    }
+
+    for (int i = index; i < circuit->node_count - 1; i++) {
+        circuit->node_wrappers[i] = circuit->node_wrappers[i + 1];
+    }
+    circuit->node_count--;
+
+
+    fillMatrix(circuit);
+}
+
+
+void addResistorToCircuit(Resistor * resistor, Circuit * circuit) {
+    addNodeToCircuit(circuit, resistor->node_wrapper_positive);
+    addNodeToCircuit(circuit, resistor->node_wrapper_negative);
+}
+
+void deleteResistorFromCircuit(Circuit * circuit, Resistor * resistor) {
+    deleteNodeWrapperFromCircuit(circuit, resistor->node_wrapper_positive);
+    deleteNodeWrapperFromCircuit(circuit, resistor->node_wrapper_negative);
+    destroyResistor(resistor);
 }
