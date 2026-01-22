@@ -2,7 +2,6 @@
 #define RESISTOR_H
 #include "node.h"
 
-
 typedef struct{
     double resistance;
     NodeWrapper * node_wrapper_positive;
@@ -13,5 +12,9 @@ Resistor * createResistor(double resistance);
 
 void destroyResistor(Resistor * resistor);
 
+static int resistor_id;
+static Resistor ** resistors;
+int getResistorId();
+Resistor * getResistor(int index);
 
 #endif

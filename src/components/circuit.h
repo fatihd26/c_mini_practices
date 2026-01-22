@@ -27,4 +27,7 @@ void fillMatrix(Circuit * circuit);
 
 void deleteNodeWrapperFromCircuit(Circuit * circuit, NodeWrapper * node_wrapper);
 void deleteResistorFromCircuit(Circuit * circuit, Resistor * resistor);
+
+
+
 #endif

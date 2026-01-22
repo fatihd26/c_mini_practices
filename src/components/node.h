@@ -1,7 +1,6 @@
 #ifndef NODE_H
 #define NODE_H
 
-
 typedef struct
 {
     int id;
@@ -11,6 +10,7 @@ typedef struct
 typedef struct{
     Node * node;
     Node * connecting_nodes;
+    struct Resistor * owner;
 }NodeWrapper;
 
 

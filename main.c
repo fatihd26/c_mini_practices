@@ -5,6 +5,7 @@
 
 #include "src/components/node.h"
 #include "src/components/resistor.h"
+#include "src/solver/equal_resistance.h"
 
 int main() {
 
@@ -24,12 +25,16 @@ int main() {
 
     fillMatrix(circuit);
 
+    
+
+
+    solveEqualResistance(circuit);
 
     prettyMatrice(circuit->node_count, circuit->node_count, circuit->graph_matrix);
 
-    deleteResistorFromCircuit(circuit,resistor1);
+    //deleteResistorFromCircuit(circuit,resistor1);
 
-    prettyMatrice(circuit->node_count, circuit->node_count, circuit->graph_matrix);
+    //prettyMatrice(circuit->node_count, circuit->node_count, circuit->graph_matrix);
 
     
 

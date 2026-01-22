@@ -12,5 +12,6 @@ add_executable(VSCODE_1
     src/components/resistor.c
     src/solver/equal_resistance.c
 
+
     
 )
