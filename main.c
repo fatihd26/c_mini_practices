@@ -38,7 +38,8 @@ int main() {
 
     
 
-    
+    destroyResistor(resistor1);
+    destroyResistor(resistor2);
     freeCircuit(circuit);
     freeMatrice(circuit->node_count, circuit->graph_matrix);
     

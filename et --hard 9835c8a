@@ -1,0 +1,13 @@
+[33mb10f5a8[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{0}: reset: moving to HEAD~1
+[33m9835c8a[m[33m ([m[1;31morigin/main[m[33m)[m HEAD@{1}: commit: I wrote the my ideas and emotions about this project in read.md file. I didnt be succes yet. The state is not enough to touch my imagine
+[33mb10f5a8[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{2}: commit: Programı biraz daha sadeleştirdim. Resistor gibi komponentler nodelara sahip. Aslında nodelar bağlantı bilgilerine sahip. Graf veri yapısı ile matrislerde bağlantı bilgileri 1 ya da 0 şeklinde saklanıyor. Komponentler kendi nodeları free edebiliyor ya da nodelar ayrı ayrı bir yere bağlanıyor. Elemanlar silindikten sonra bağlantı matrisi güncellenebilir. Bu adımdan sonra fizik motorunu sadece dc ve resistörlü devreler için çözmeye çalışacağım.
+[33m397472f[m HEAD@{3}: commit: Hatayı çözdüm. Graf veri yapısının uygulanmasını sağladım. Nodeları bir wrapper içerisine sararak nodeların bağlantılarını tutan bir connecting_nodes özelliği tanımladım. Nodelar arasındaki bağlantı bir matriste tutuuyor. Bağlantı varsa 1 yoksa 0 şeklinde. Bu sayede bu matris üzerinden ilgili gui çizgileri çizilebilir. Her elemanın nodes dizisi olabilir. N bacak varsa N node tanımlanacak. Bu sayede gui-motor arasınaki köprü bir matris ile halledilecek.
+[33md8717ad[m HEAD@{4}: commit: Hata ayıklama. Buradaki amacım otomatik graf matrisi oluşturabilmek
+[33meb24190[m HEAD@{5}: commit: Graf veri yapısını uygulamak için matrisleri kullanmam gerekiyor. Matrislerin C dilinde nasıl elde edildiğini öğrenmem için de Matris- pointer ikilisini matrislerin c dilinde nasıl ifade edilebilieceğini öğrenmem gerekiyordu. Matrisler double pointer ile de ifade edilebilir bir dizi olarak da ifade edilebilir. Matrisi dizi olarak ifade etmek daha verimli bir yöntemdir.
+[33mb5340b7[m HEAD@{6}: commit: gereksiz dosyalar temizleendi
+[33mfcca7e6[m HEAD@{7}: commit: Düşüncelerimi ekledim
+[33m3f12279[m HEAD@{8}: commit: mini edits
+[33m73c94e6[m HEAD@{9}: Branch: renamed refs/heads/main to refs/heads/main
+[33m73c94e6[m HEAD@{11}: Branch: renamed refs/heads/main to refs/heads/main
+[33m73c94e6[m HEAD@{13}: Branch: renamed refs/heads/master to refs/heads/main
+[33m73c94e6[m HEAD@{15}: commit (initial): First Commit
