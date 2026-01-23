@@ -43,7 +43,7 @@ void createGraphMatrix(Circuit * circuit){
 void fillMatrix(Circuit * circuit){
     for (int i = 0; i < circuit->node_count; i++) {
 
-      for (int j = 0; j < circuit->node_wrappers[i].node->connected_node_count-1; j++) {
+      for (int j = 0; j < circuit->node_wrappers[i].node->connected_node_count; j++) {
             int id_base = circuit->node_wrappers[i].node->id;
             int id_connected = circuit->node_wrappers[i].connecting_nodes[j].id;
 

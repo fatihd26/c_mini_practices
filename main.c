@@ -9,18 +9,21 @@
 
 int main() {
 
-    Circuit * circuit = createCircuit(4);
+    Circuit * circuit = createCircuit(8);
 
     Resistor * resistor1 = createResistor(100.0);
     Resistor * resistor2 = createResistor(200.0);
+    Resistor * resistor3 = createResistor(300.0);
+    Resistor * resistor4 = createResistor(400.0);
 
     addResistorToCircuit(resistor1, circuit);
     addResistorToCircuit(resistor2, circuit);
+    addResistorToCircuit(resistor3, circuit);
 
-
-
-    connectNodes(resistor1->node_wrapper_positive, resistor2->node_wrapper_positive);
-    connectNodes(resistor1->node_wrapper_negative, resistor2->node_wrapper_negative);
+    connectNodes(resistor2->node_wrapper_positive, resistor1->node_wrapper_negative);
+    connectNodes(resistor1->node_wrapper_positive, resistor3->node_wrapper_negative);
+    connectNodes(resistor3->node_wrapper_positive, resistor2->node_wrapper_negative);
+    connectNodes(resistor3->node_wrapper_positive, resistor1->node_wrapper_negative);
     createGraphMatrix(circuit);
 
     fillMatrix(circuit);
@@ -28,7 +31,7 @@ int main() {
     
 
 
-    solveEqualResistance(circuit);
+    //solveEqualResistance(circuit);
 
     prettyMatrice(circuit->node_count, circuit->node_count, circuit->graph_matrix);
 

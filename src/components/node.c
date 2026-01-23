@@ -5,8 +5,8 @@
 static int base_id = 0;
 
 void initNode(NodeWrapper * node_wrapper){
-    node_wrapper->node->connected_node_count = 1;
-    node_wrapper->connecting_nodes = malloc(sizeof(Node*) * node_wrapper->node->connected_node_count);
+    node_wrapper->node->connected_node_count = 0;
+    node_wrapper->connecting_nodes = malloc(sizeof(Node*) * (node_wrapper->node->connected_node_count+1));
 }
 NodeWrapper * createNodeWrapper(){
     NodeWrapper * node_wrapper = malloc(sizeof(NodeWrapper));
@@ -20,11 +20,13 @@ void connectNodes(NodeWrapper * node1_wrapper, NodeWrapper * node2_wrapper){
     node1_wrapper->node->connected_node_count++;
     node2_wrapper->node->connected_node_count++;
 
+    
+
     node1_wrapper->connecting_nodes = realloc(node1_wrapper->connecting_nodes, sizeof(Node*) * node1_wrapper->node->connected_node_count);
     node2_wrapper->connecting_nodes = realloc(node2_wrapper->connecting_nodes, sizeof(Node*) * node2_wrapper->node->connected_node_count);
 
-    node1_wrapper->connecting_nodes[node1_wrapper->node->connected_node_count - 2] = *node2_wrapper->node;
-    node2_wrapper->connecting_nodes[node2_wrapper->node->connected_node_count - 2] = *node1_wrapper->node;
+    node1_wrapper->connecting_nodes[node1_wrapper->node->connected_node_count - 1] = *(node2_wrapper->node);
+    node2_wrapper->connecting_nodes[node2_wrapper->node->connected_node_count - 1] = *(node1_wrapper->node);
 }
 
 int getBaseId(){
